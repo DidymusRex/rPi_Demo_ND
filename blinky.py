@@ -10,7 +10,8 @@ from time import sleep
 # led + 100 ohm resistor
 led = Pin(16, Pin.OUT)
 
-for _ in range(1,10):
+# turn the LED on and off 10X
+for _ in range(1, 10):
     led.on()
     sleep(.5)
     led.off()

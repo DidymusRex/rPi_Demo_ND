@@ -5,9 +5,13 @@ from machine import Pin
 from neopixel import NeoPixel
 from time import sleep, sleep_ms
 
-pin = Pin(15, Pin.OUT)     # set pin 15 to output to drive NeoPixels
-np = NeoPixel(Pin(15), 17) # create NeoPixel driver on pin 15 for 17 pixels
+# set pin 15 to output to drive NeoPixels
+pin = Pin(15, Pin.OUT)
 
+# create NeoPixel driver on pin 15 for 17 pixels
+np = NeoPixel(pin, 17) 
+
+# a demo I borrowed from Adafruit
 def demo(np):
     n = np.n
 
@@ -45,8 +49,9 @@ def demo(np):
         np[i] = (0, 0, 0)
     np.write()
 
+# A demo I asked ChatGPT to write
+#   it even comments its code!
 def demo_ai(np):
-# by: ChatGPT
     colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (0, 255, 255), (255, 0, 255)] # list of RGB colors to cycle through
     np.fill((0,0,0)) # turn off all pixels to start
     np.write() # update the strip
@@ -68,10 +73,11 @@ def demo_ai(np):
             np[j] = (r, g, b) # set a random color
         np.write() # update the strip
         sleep(0.1) # wait a short time before updating the next frame
- 
+
+# Run the demos
 demo(np)
 demo_ai(np)
 
-# turn it off
+# turn off the NeoPixel strip
 np.fill((0,0,0))
 np.write()

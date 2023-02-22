@@ -1,3 +1,7 @@
+"""
+Demo Five: Control an LED from the web
+    Credit: ChatGPT
+"""
 import machine
 import network
 import usocket as socket
@@ -44,7 +48,6 @@ web_page = """
     <input type="text" id="textbox" name="textbox">
     <input type="submit" value="Submit">
   </form>
-  </br>
   <form method="POST">
     <input type="submit" value="LED Control" onclick="toggleLED()">
   </form>
@@ -76,7 +79,7 @@ def handle_request(conn):
         if 'textbox=' in request_str:
             text = request_str.split('textbox=')[1].split(' ')[0].replace('+', ' ')
             oled.fill(0)
-            oled.text(text, 0, 0)
+            oled.text(text, 0, 10)
             oled.show()
         
         conn.send('HTTP/1.1 200 OK\nContent-Type: text/html\n\n')
